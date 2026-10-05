@@ -88,6 +88,10 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7.5vw, 6.1rem); line-height: .98; lette
 .step-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
 .text-button { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); background: white; color: var(--ink); text-decoration: none; font-size: .84rem; font-weight: 750; }
 .text-button:hover { border-color: #b9c1b7; }
+.prompt-details { margin: 14px 0 4px; border: 1px solid var(--line); border-radius: 14px; background: #fbfcf8; overflow: hidden; }
+.prompt-details summary { padding: 12px 14px; cursor: pointer; color: var(--ink); font-size: .85rem; font-weight: 750; }
+.prompt-details .prompt-box { max-height: 430px; padding-top: 14px; border-top: 1px solid var(--line); }
+.workflow-note { margin-top: 22px; padding: 18px 20px; border-radius: 18px; background: #eeece8; color: var(--ink); font-size: .92rem; }
 .copy-button { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 0; border-radius: 12px; background: var(--ink); color: white; cursor: pointer; font-size: .84rem; font-weight: 750; transition: background .2s ease, transform .2s ease; }
 .copy-button:hover { background: #2d3a31; transform: translateY(-1px); }
 .copy-button.copied { background: var(--purple); }
