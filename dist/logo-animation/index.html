@@ -14,7 +14,6 @@
       <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 3.5 16 10 5 16.5v-13Z" fill="currentColor"/></svg></span>
       Prompt Library
     </a>
-    <span class="tiny-link">AI video workflows</span>
   </header>
 
   <main class="shell detail-main">
@@ -27,11 +26,6 @@
       </div>
       <div>
         <p class="detail-intro">Use ChatGPT to turn your logo into a brand-specific animation prompt, then generate the final video in Google Flow.</p>
-        <div class="meta-row" aria-label="Workflow details">
-          <span class="pill">2 AI tools</span>
-          <span class="pill">6-second video</span>
-          <span class="pill">Beginner friendly</span>
-        </div>
       </div>
     </section>
 
@@ -40,7 +34,7 @@
         <div class="panel-head"><h2 id="workflow-title">The workflow</h2></div>
         <ol class="steps">
           <li class="step"><span class="step-num">1</span><div><h3>Open ChatGPT</h3><p>Start a new chat and upload the official logo you want to animate. Use the clearest, highest-resolution file you have.</p></div></li>
-          <li class="step"><span class="step-num">2</span><div><h3>Paste the prompt</h3><p>Copy the prompt on this page and send it with your uploaded logo. ChatGPT will research the brand and return a custom, ready-to-use Omni Flash prompt.</p></div></li>
+          <li class="step"><span class="step-num">2</span><div><h3>Copy and paste the prompt</h3><p>Copy the ChatGPT prompt below and send it with your uploaded logo. ChatGPT will research the brand and return a custom, ready-to-use Omni Flash prompt.</p><div class="step-actions"><button class="copy-button" type="button" data-copy-target="prompt-text"><span aria-hidden="true">□</span> <span class="copy-label">Copy prompt</span></button><a class="text-button" href="#prompt-title">View prompt</a></div></div></li>
           <li class="step"><span class="step-num">3</span><div><h3>Move to Google Flow</h3><p>Open Google Flow, upload the same logo again, and paste the Omni Flash prompt that ChatGPT created for you.</p></div></li>
           <li class="step"><span class="step-num">4</span><div><h3>Set up and generate</h3><p>Choose a 16:9 aspect ratio, generate one video, and select Omni 1.1 Flash. Click send—your logo animation is ready to review.</p></div></li>
         </ol>
@@ -232,20 +226,24 @@ Do not generate the animation inside ChatGPT.</pre>
 
   <footer class="shell site-footer">Made to help you create faster.</footer>
   <script>
-    const button = document.querySelector('[data-copy-target]');
-    button.addEventListener('click', async () => {
+    const buttons = document.querySelectorAll('[data-copy-target]');
+    buttons.forEach((button) => button.addEventListener('click', async () => {
       const text = document.getElementById(button.dataset.copyTarget).innerText;
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch (_) {
+      try { await navigator.clipboard.writeText(text); }
+      catch (_) {
         const area = document.createElement('textarea');
         area.value = text; document.body.appendChild(area); area.select();
         document.execCommand('copy'); area.remove();
       }
-      button.classList.add('copied');
-      button.querySelector('.copy-label').textContent = 'Copied!';
-      setTimeout(() => { button.classList.remove('copied'); button.querySelector('.copy-label').textContent = 'Copy prompt'; }, 1800);
-    });
+      buttons.forEach((item) => {
+        item.classList.add('copied');
+        item.querySelector('.copy-label').textContent = 'Copied!';
+      });
+      setTimeout(() => buttons.forEach((item) => {
+        item.classList.remove('copied');
+        item.querySelector('.copy-label').textContent = 'Copy prompt';
+      }), 1800);
+    }));
   </script>
 </body>
 </html>
